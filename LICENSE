@@ -1,4 +1,3 @@
-/*
 University of Illinois/NCSA Open Source License 
 
 Copyright (c) 2018 Terrain Data, Inc. and the authors. All rights reserved.
@@ -40,64 +39,4 @@ CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH
 THE SOFTWARE.
-*/
 
-import { List } from 'immutable';
-
-export type WayPoint = string | number;
-export type KeyPath = List<WayPoint>;
-export const KeyPath = (args: WayPoint[] = []) => List<WayPoint>(args);
-
-export class KeyPathUtil
-{
-  public static isNamed(keypath: KeyPath, index?: number): boolean
-  {
-    const last: WayPoint = index === undefined ? keypath.last() : keypath.get(index);
-    return typeof last !== 'number';
-  }
-
-  public static isWildcard(keypath: KeyPath, index?: number): boolean
-  {
-    const last = index === undefined ? keypath.last() : keypath.get(index);
-    return last as number === -1;
-  }
-
-  public static isSpecified(keypath: KeyPath, index?: number): boolean
-  {
-    const last = index === undefined ? keypath.last() : keypath.get(index);
-    return last as number !== -1 && typeof last === 'number';
-  }
-
-  public static hash(keypath: KeyPath): string
-  {
-    return JSON.stringify(keypath.toJS());
-  }
-
-  public static unhash(keypath: string): KeyPath
-  {
-    return KeyPath(JSON.parse(keypath));
-  }
-
-  public static convertIndices(keypath: KeyPath, value = -1): KeyPath
-  {
-    if (keypath.size === 0)
-    {
-      return keypath;
-    }
-    const arrayIndices = {};
-    for (let i: number = 1; i < keypath.size; i++)
-    {
-      const path = keypath.slice(0, i + 1).toList();
-      if (!KeyPathUtil.isNamed(path))
-      {
-        (arrayIndices as any)[i] = true;
-      }
-    }
-
-    const scrubbed = keypath.map((key, i) =>
-    {
-      return (arrayIndices as any)[i as number] === true ? value : key;
-    }).toList();
-    return scrubbed as KeyPath;
-  }
-}

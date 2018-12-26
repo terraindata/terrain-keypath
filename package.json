@@ -1,0 +1,34 @@
+{
+  "name": "terrain-keypath",
+  "version": "1.0.0",
+  "description": "A tiny class that defines a key path type for e.g. traversing deep objects, along with some related utilities",
+  "main": "dist/KeyPath.js",
+  "typings": "dist/KeyPath.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terraindata/terrain-keypath.git"
+  },
+  "keywords": [
+    "keypath",
+    "deep",
+    "JSON",
+    "path"
+  ],
+  "author": "Terrain Data, Inc.",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/terraindata/terrain-keypath/issues"
+  },
+  "homepage": "https://github.com/terraindata/terrain-keypath#readme",
+  "dependencies": {
+    "immutable": "^3.x"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "typescript": "^3.2.2"
+  }
+}

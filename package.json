@@ -24,6 +24,9 @@
     "url": "https://github.com/terraindata/terrain-keypath/issues"
   },
   "homepage": "https://github.com/terraindata/terrain-keypath#readme",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "immutable": "^3.x"
   },

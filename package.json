@@ -1,6 +1,6 @@
 {
   "name": "terrain-keypath",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tiny class that defines a key path type for e.g. traversing deep objects, along with some related utilities",
   "main": "dist/KeyPath.js",
   "typings": "dist/KeyPath.d.ts",

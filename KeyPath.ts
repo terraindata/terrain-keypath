@@ -52,7 +52,7 @@ export class KeyPathUtil
 {
   public static isNamed(keypath: KeyPath, index?: number): boolean
   {
-    const last: WayPoint = index === undefined ? keypath.last() : keypath.get(index);
+    const last: WayPoint = (index === undefined ? keypath.last() : keypath.get(index)) as (string | number);
     return typeof last !== 'number';
   }
 
